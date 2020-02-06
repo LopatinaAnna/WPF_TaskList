@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_TaskList"
         mc:Ignorable="d"
-        Title="Task List" Height="450" Width="800">
+        Title="Task List" Height="450" Width="450" MinWidth="260" MinHeight="100" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
+        <DataGrid x:Name="dgTaskList" FontSize="16" AutoGenerateColumns="False" FontFamily="Calibri" BorderBrush="{x:Null}" MinRowHeight="27" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >
+            
+            <DataGrid.HorizontalGridLinesBrush>
+                <SolidColorBrush Color="#FFA4B3C3"/>
+            </DataGrid.HorizontalGridLinesBrush>
+            <DataGrid.VerticalGridLinesBrush>
+                <SolidColorBrush Color="#FFA4B3C3"/>
+            </DataGrid.VerticalGridLinesBrush>
+            
+            <DataGrid.Columns>
 
+                <DataGridTemplateColumn Header="Deadline"  Width="85" CanUserResize="False" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Deadline}" VerticalAlignment="Center" Margin="5 0 0 0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Deadline}" SelectedDateFormat ="Short" MaxHeight="24"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Check" Width="50" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"   HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=TaskText}" IsReadOnly="False" Header="Tasks" Width="*" MinWidth="85"/>
+                                
+            </DataGrid.Columns>
+            
+        </DataGrid>
     </Grid>
 </Window>
