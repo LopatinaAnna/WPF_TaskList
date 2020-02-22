@@ -27,15 +27,10 @@
             BorderBrush="{x:Null}"
             FontFamily="Calibri"
             FontSize="16"
+            HorizontalGridLinesBrush="#FFA7C9EE"
             ItemsSource="{Binding TaskListData}"
-            MinRowHeight="27">
-
-            <DataGrid.HorizontalGridLinesBrush>
-                <SolidColorBrush Color="#FFA4B3C3" />
-            </DataGrid.HorizontalGridLinesBrush>
-            <DataGrid.VerticalGridLinesBrush>
-                <SolidColorBrush Color="#FFA4B3C3" />
-            </DataGrid.VerticalGridLinesBrush>
+            MinRowHeight="27"
+            VerticalGridLinesBrush="#FFA7C9EE">
 
             <DataGrid.Columns>
 
@@ -48,14 +43,14 @@
                             <TextBlock
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding Deadline}" />
+                                Text="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <DatePicker
                                 MaxHeight="24"
-                                SelectedDate="{Binding Deadline}"
+                                SelectedDate="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}"
                                 SelectedDateFormat="Short" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -75,27 +70,11 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <!--<DataGridTemplateColumn
-                    Width="*"
-                    MinWidth="85"
-                    Header="Tasks"
-                    IsReadOnly="False">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBox
-                                Margin="-2,-2,-2,-3"
-                                Padding="3"
-                                VerticalAlignment="Center"
-                                Text="{Binding TaskText, UpdateSourceTrigger=PropertyChanged}"
-                                TextWrapping="Wrap" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
-
                 <DataGridTextColumn
                     Width="*"
                     MinWidth="85"
                     Binding="{Binding TaskText, UpdateSourceTrigger=PropertyChanged}"
+                    ElementStyle="{StaticResource WrapText}"
                     Header="Tasks"
                     IsReadOnly="False" />
             </DataGrid.Columns>
