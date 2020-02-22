@@ -3,25 +3,31 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:WPF_TaskList"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:WPF_TaskList.ViewModels"
     Title="Task List"
     Width="450"
     Height="450"
     MinWidth="260"
     MinHeight="100"
-    Loaded="Window_Loaded"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+
+    <!--<Window.DataContext>
+        <vm:ViewModel/>
+    </Window.DataContext>-->
+
     <Grid>
         <DataGrid
             x:Name="dgTaskList"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             AutoGenerateColumns="False"
+            Background="White"
             BorderBrush="{x:Null}"
             FontFamily="Calibri"
             FontSize="16"
+            ItemsSource="{Binding TaskListData}"
             MinRowHeight="27">
 
             <DataGrid.HorizontalGridLinesBrush>
@@ -69,13 +75,29 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
+                <!--<DataGridTemplateColumn
+                    Width="*"
+                    MinWidth="85"
+                    Header="Tasks"
+                    IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox
+                                Margin="-2,-2,-2,-3"
+                                Padding="3"
+                                VerticalAlignment="Center"
+                                Text="{Binding TaskText, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+
                 <DataGridTextColumn
                     Width="*"
                     MinWidth="85"
-                    Binding="{Binding Path=TaskText}"
+                    Binding="{Binding TaskText, UpdateSourceTrigger=PropertyChanged}"
                     Header="Tasks"
                     IsReadOnly="False" />
-
             </DataGrid.Columns>
 
         </DataGrid>
