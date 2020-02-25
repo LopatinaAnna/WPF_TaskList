@@ -12,7 +12,7 @@ namespace WPF_TaskList.Models
 
         private string _taskText;
 
-    [JsonProperty(PropertyName = "deadline")]
+        [JsonProperty(PropertyName = "deadline")]
         public string Deadline
         {
             get { return _deadline; }

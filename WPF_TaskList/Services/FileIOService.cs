@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using WPF_TaskList.Models;
 
 namespace WPF_TaskList.Services
@@ -26,7 +27,11 @@ namespace WPF_TaskList.Services
             {
                 string fileText = reader.ReadToEnd();
                 if (fileText != "")
-                    return JsonConvert.DeserializeObject<BindingList<TaskModel>>(fileText);
+                {
+                    var _taskListData = JsonConvert.DeserializeObject<BindingList<TaskModel>>(fileText);
+                    return new BindingList<TaskModel>(_taskListData.OrderBy(x => x.IsChecked).ToList());
+                }
+                     
                 return new BindingList<TaskModel>();
             }
         }

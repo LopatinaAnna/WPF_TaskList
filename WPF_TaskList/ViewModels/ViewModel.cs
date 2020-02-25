@@ -41,10 +41,6 @@ namespace WPF_TaskList.ViewModels
 
         private void _taskListData_ListChanged(object sender, ListChangedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-
-            if (e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.ItemChanged)
-            {
                 try
                 {
                     _fileIOService.SaveData(sender);
@@ -54,7 +50,6 @@ namespace WPF_TaskList.ViewModels
                     MessageBox.Show(ex.Message);
                     Environment.Exit(0);
                 }
-            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
