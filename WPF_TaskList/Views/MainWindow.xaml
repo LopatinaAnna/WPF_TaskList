@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="WPF_TaskList.MainWindow"
+    x:Class="WPF_TaskList.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -24,12 +24,15 @@
             VerticalContentAlignment="Center"
             AutoGenerateColumns="False"
             Background="White"
+            BeginningEdit="BeginningEdit"
             BorderBrush="{x:Null}"
+            CellEditEnding="CellEditEnding"
             FontFamily="Calibri"
             FontSize="16"
             HorizontalGridLinesBrush="#FFA7C9EE"
             ItemsSource="{Binding TaskListData}"
             MinRowHeight="27"
+            PreviewKeyDown="DataGrid_PreviewKeyDown"
             VerticalGridLinesBrush="#FFA7C9EE">
 
             <DataGrid.Columns>
@@ -65,7 +68,7 @@
                             <CheckBox
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                IsChecked="{Binding Path=IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+                                IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
