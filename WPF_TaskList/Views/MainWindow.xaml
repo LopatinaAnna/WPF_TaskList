@@ -6,8 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:WPF_TaskList.ViewModels"
     Title="Task List"
-    Width="450"
-    Height="450"
+    Width="550"
+    Height="550"
     MinWidth="260"
     MinHeight="100"
     WindowStartupLocation="CenterScreen"
@@ -20,47 +20,40 @@
     <Grid>
         <DataGrid
             x:Name="dgTaskList"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
             AutoGenerateColumns="False"
-            Background="White"
             BeginningEdit="BeginningEdit"
             BorderBrush="{x:Null}"
             CellEditEnding="CellEditEnding"
-            FontFamily="Calibri"
             FontSize="16"
-            HorizontalGridLinesBrush="#FFA7C9EE"
             ItemsSource="{Binding TaskListData}"
             MinRowHeight="27"
-            PreviewKeyDown="DataGrid_PreviewKeyDown"
-            VerticalGridLinesBrush="#FFA7C9EE">
+            PreviewKeyDown="DataGrid_PreviewKeyDown">
 
             <DataGrid.Columns>
 
                 <DataGridTemplateColumn
-                    Width="85"
+                    Width="110"
                     CanUserResize="False"
                     Header="Deadline">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
-                                Margin="5,0,0,0"
-                                VerticalAlignment="Center"
                                 Text="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <DatePicker
-                                MaxHeight="24"
-                                SelectedDate="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}"
-                                SelectedDateFormat="Short" />
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                MaxHeight="26"
+                                SelectedDate="{Binding Deadline, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
                 <DataGridTemplateColumn
-                    Width="50"
+                    Width="65"
                     CanUserResize="False"
                     Header="Check">
                     <DataGridTemplateColumn.CellTemplate>
@@ -79,7 +72,7 @@
                     Binding="{Binding TaskText, UpdateSourceTrigger=PropertyChanged}"
                     ElementStyle="{StaticResource WrapText}"
                     Header="Tasks"
-                    IsReadOnly="False" />
+                    IsReadOnly="False"  />
             </DataGrid.Columns>
 
         </DataGrid>

@@ -15,7 +15,12 @@ namespace WPF_TaskList.Models
         [JsonProperty(PropertyName = "deadline")]
         public string Deadline
         {
-            get { return _deadline; }
+            get 
+            {
+                if (_deadline.Length > 11)
+                    return _deadline.Remove(11);
+                else return _deadline;
+            }
             set
             {
                 if (_deadline == value)
