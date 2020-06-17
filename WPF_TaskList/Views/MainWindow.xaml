@@ -8,17 +8,17 @@
     Title="Task List"
     Width="550"
     Height="550"
-    MinWidth="260"
-    MinHeight="100"
+    MinWidth="290"
+    MinHeight="180"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
     <!--<Window.DataContext>
-        <vm:ViewModel/>
+        <vm:ViewModel />
     </Window.DataContext>-->
 
     <Grid>
-        <DataGrid
+        <DataGrid 
             x:Name="dgTaskList"
             AutoGenerateColumns="False"
             BeginningEdit="BeginningEdit"
@@ -72,9 +72,8 @@
                     Binding="{Binding TaskText, UpdateSourceTrigger=PropertyChanged}"
                     ElementStyle="{StaticResource WrapText}"
                     Header="Tasks"
-                    IsReadOnly="False"  />
+                    IsReadOnly="False" />
             </DataGrid.Columns>
-
         </DataGrid>
     </Grid>
 </Window>

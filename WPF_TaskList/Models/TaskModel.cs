@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace WPF_TaskList.Models
 {
-    class TaskModel : INotifyPropertyChanged
+    internal class TaskModel : INotifyPropertyChanged
     {
         private string _deadline = DateTime.Now.ToString("dd/MM/yyyy");
 
@@ -15,7 +15,7 @@ namespace WPF_TaskList.Models
         [JsonProperty(PropertyName = "deadline")]
         public string Deadline
         {
-            get 
+            get
             {
                 if (_deadline.Length > 11)
                     return _deadline.Remove(11);
@@ -34,7 +34,7 @@ namespace WPF_TaskList.Models
         public bool IsChecked
         {
             get { return _isChecked; }
-            set 
+            set
             {
                 if (_isChecked == value)
                     return;
@@ -53,7 +53,7 @@ namespace WPF_TaskList.Models
                     return;
                 _taskText = value;
                 OnPropertyChanged("TaskText");
-             }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

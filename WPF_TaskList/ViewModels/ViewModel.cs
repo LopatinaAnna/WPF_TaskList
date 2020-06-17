@@ -6,9 +6,10 @@ using WPF_TaskList.Services;
 
 namespace WPF_TaskList.ViewModels
 {
-    class ViewModel : INotifyPropertyChanged
+    internal class ViewModel : INotifyPropertyChanged
     {
         private BindingList<TaskModel> _taskListData;
+
         public BindingList<TaskModel> TaskListData
         {
             get { return _taskListData; }
@@ -19,7 +20,7 @@ namespace WPF_TaskList.ViewModels
             }
         }
 
-        private FileIOService _fileIOService;
+        private readonly FileIOService _fileIOService;
 
         private readonly string PATH = $"{Environment.CurrentDirectory}\\taskListData.json";
 
@@ -36,23 +37,24 @@ namespace WPF_TaskList.ViewModels
                 MessageBox.Show(ex.Message);
                 Environment.Exit(0);
             }
-            _taskListData.ListChanged += _taskListData_ListChanged;
+            _taskListData.ListChanged += TaskListData_ListChanged;
         }
 
-        private void _taskListData_ListChanged(object sender, ListChangedEventArgs e)
+        private void TaskListData_ListChanged(object sender, ListChangedEventArgs e)
         {
-                try
-                {
-                    _fileIOService.SaveData(sender);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    Environment.Exit(0);
-                }
+            try
+            {
+                _fileIOService.SaveData(sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Environment.Exit(0);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

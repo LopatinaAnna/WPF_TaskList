@@ -17,7 +17,7 @@ namespace WPF_TaskList
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), 
+            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement),
                 new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
             base.OnStartup(e);
         }

@@ -26,7 +26,9 @@ namespace WPF_TaskList.Views
                 }
             }
         }
-        bool isBeingEdited;
+
+        private bool isBeingEdited;
+
         private void BeginningEdit(object sender, System.Windows.Controls.DataGridBeginningEditEventArgs e)
         {
             isBeingEdited = true;
